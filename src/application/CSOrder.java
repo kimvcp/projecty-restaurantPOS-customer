@@ -14,7 +14,6 @@ import util.AbstractWindow;
  */
 public class CSOrder extends AbstractWindow {
 
-	// for setting the tablenumber to CSOrderController
 	public CSOrder(String input) {
 		CSOrderController.setTable(input);
 	}

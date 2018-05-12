@@ -98,8 +98,6 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
-
-				// set handler for the button
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -132,8 +130,6 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
-
-				// set handler for the button
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {

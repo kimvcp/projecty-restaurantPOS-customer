@@ -19,11 +19,8 @@ public class Main extends AbstractWindow {
 		try {
 			ImageFactory instance = ImageFactory.getInstance();
 			long start = System.nanoTime();
-			System.out.println("start time: " + (System.nanoTime() - start / 10e9));
 			instance.loadDrinkImage();
 			instance.loadFoodImage();
-			// Future<List<Button>> future = ExecutorService.submit(new
-			// DownloadTask());
 			super.setFilename("view/startup.fxml");
 			super.start(stage);
 			stage.setTitle("Start Up");

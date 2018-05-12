@@ -11,7 +11,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import model.Menu;
 import util.PropertyManager;
 
@@ -36,14 +35,16 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the
-	 * database.
+	 * Private constructor for DBManger. Getting the connection from the database.
 	 */
 	private DBManager() {
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -87,8 +88,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices
-	 * to create a Menu object.
+	 * Method for getting data from the database which are food names and prices to
+	 * create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu> of food names
@@ -144,7 +145,6 @@ public class DBManager {
 		// table does not exist
 		return false;
 	}
-
 
 	/**
 	 * Method for inserting current orders into the requested table in database.
@@ -221,10 +221,5 @@ public class DBManager {
 		}
 		return temp;
 	}
-
-	
-
-	
-
 
 }

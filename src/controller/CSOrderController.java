@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
@@ -26,7 +25,7 @@ import util.ImageFactory;
 import util.ScreenController;
 
 /**
- * OrderController(manager/employee) contains method for handling all event
+ * OrderController(customer) contains method for handling all event
  * receive from the UserInterface. Contains method for viewing and ordering
  * customer orders. (With help form TA for spacing nodes)
  * 
@@ -63,10 +62,6 @@ public class CSOrderController implements Observer {
 	private static String tablenumber;
 	private Alert alert;
 
-	// for single instantiation
-	private static List<Menu> foods;
-	private static List<Menu> drinks;
-	// instance of classes
 	private static Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 	private static ImageFactory instance = ImageFactory.getInstance();
@@ -75,7 +70,6 @@ public class CSOrderController implements Observer {
 
 	@FXML
 	public void initialize() {
-		// adding buttons to each pane
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 		o.addObserver(this);
@@ -94,12 +88,10 @@ public class CSOrderController implements Observer {
 	 * @param event
 	 */
 	public void orderButtonHandler(MouseEvent event) {
-		// if order list is empty
 		if (o.getOrders().isEmpty()) {
 			alert = new Alert(AlertType.ERROR, "Must order atleast one item!", ButtonType.OK);
 			alert.show();
 		}
-		// order confirmation
 		else {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
 			alert.showAndWait().ifPresent(response -> {
@@ -146,18 +138,6 @@ public class CSOrderController implements Observer {
 	 */
 	public static void setTable(String buttonText) {
 		tablenumber = buttonText;
-	}
-
-	/**
-	 * Static method for scene before opening this scene to get list of menu names
-	 * and set the List<Menu> attribute above.
-	 * 
-	 * @param List
-	 *            of menu names List<Menu>
-	 */
-	public static void setMenu(List<Menu> arg, List<Menu> arg2) {
-		foods = arg;
-		drinks = arg2;
 	}
 
 	// Set the current total
