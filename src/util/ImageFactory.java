@@ -22,7 +22,6 @@ public class ImageFactory {
 	protected static ImageFactory factory;
 	private static DBManager dbm = DBManager.getInstance();
 	private static Order o = Order.getInstance();
-
 	private static List<Menu> foodname;
 	private static List<Menu> drinkname;
 	private static List<String> foodUrl;

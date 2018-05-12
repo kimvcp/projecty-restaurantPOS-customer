@@ -18,7 +18,6 @@ public class Main extends AbstractWindow {
 	public void start(Stage stage) {
 		try {
 			ImageFactory instance = ImageFactory.getInstance();
-			long start = System.nanoTime();
 			instance.loadDrinkImage();
 			instance.loadFoodImage();
 			super.setFilename("view/startup.fxml");
@@ -31,7 +30,6 @@ public class Main extends AbstractWindow {
 	}
 
 	public static void main(String[] args) {
-		// opening connection to database with private constructor
 		DBManager.getInstance();
 		launch(args);
 	}

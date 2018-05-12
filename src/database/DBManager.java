@@ -23,15 +23,12 @@ import util.PropertyManager;
  *
  */
 public class DBManager {
-	// for single instantiation
 	private static PropertyManager pm = PropertyManager.getInstance();
-	// singleton instance of DBManager
 	private static DBManager instance;
 	private Connection connection;
 	private String DB_URL = pm.getProperty("database.url");
 	private String USER = pm.getProperty("database.user");
 	private String PASS = pm.getProperty("database.password");
-	/** Command for mysql database using JDBC */
 	private String sqlCommand;
 
 	/**
@@ -95,7 +92,6 @@ public class DBManager {
 	 * @return List<Menu> of food names
 	 */
 	public List<Menu> getFoodname(String foodkind) {
-		// named variable temp for temporary
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		PreparedStatement stmt = null;
@@ -111,7 +107,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -135,14 +130,12 @@ public class DBManager {
 		try {
 			dbm = connection.getMetaData();
 			ResultSet table = dbm.getTables(null, null, tableNumber, null);
-			// table exists
 			if (table.next()) {
 				return true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// table does not exist
 		return false;
 	}
 
@@ -154,7 +147,6 @@ public class DBManager {
 	 *            of orders
 	 */
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
-		// name variable tmp for temporary
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
@@ -190,7 +182,6 @@ public class DBManager {
 	 * @return Map<Menu,Integer> of orders
 	 */
 	public Map<Menu, Integer> getDBOrders(String tableNumber) {
-		// name variable temp for temporary
 		Map<Menu, Integer> temp = new LinkedHashMap<>();
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp;
