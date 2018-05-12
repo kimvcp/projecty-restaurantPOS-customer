@@ -131,7 +131,6 @@ public class CSTableController {
 			ex.printStackTrace();
 		}
 		display.setText(this.number);
-		clear();
 	}
 
 	/**
@@ -142,7 +141,7 @@ public class CSTableController {
 	 */
 	public void clearButtonHandler(ActionEvent event) {
 		this.number = "";
-		clear();
+		display.setText(number);
 	}
 
 	/**
@@ -159,16 +158,10 @@ public class CSTableController {
 		if (!dbm.checkTable("table" + number)) {
 			alert = new Alert(AlertType.ERROR, "No such a table: " + number, ButtonType.OK);
 			alert.show();
+			this.number = "";
+			display.setText(number);
 		} else {
 			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSOrder(number));
 		}
 	}
-
-	/**
-	 * Set the number (private attribute) to 0.
-	 */
-	public void clear() {
-		display.setText(number + "");
-	}
-
 }

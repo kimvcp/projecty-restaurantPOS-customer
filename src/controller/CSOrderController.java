@@ -8,16 +8,23 @@ import java.util.Observer;
 import application.CSTable;
 import application.Main;
 import database.DBManager;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Menu;
 import model.Order;
@@ -56,8 +63,12 @@ public class CSOrderController implements Observer {
 	@FXML
 	private TextArea display2;
 
+	@FXML
+	private VBox root ;
+
 	private static String tablenumber;
 	private Alert alert;
+
 
 	// for single instantiation
 	private static List<Menu> foods;
@@ -178,7 +189,18 @@ public class CSOrderController implements Observer {
 	// set the top display in the UI
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
-		display.setText(text);
+		StringProperty str = new SimpleStringProperty();
+		str.setValue(text);
+		display.textProperty().bind(str);
+		str.addListener(new ChangeListener<Object>() {
+	            @Override
+	            public void changed(ObservableValue<?> observable, Object oldValue,
+	                                Object newValue) {
+	                 display.selectPositionCaret(display.getLength()); 
+	                  display.deselect(); 
+	            }
+	        });
+		
 		setTotal();
 	}
 

@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Observable;
 
 import database.DBManager;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * A singleton class represents customer order. Consist of method for managing
@@ -123,7 +125,10 @@ public class Order extends Observable {
 			String name = menu.getName();
 			int price = menu.getPrice() * qty;
 			// separate each order by \n
-			text += String.format("%-35s %10d %10d\n", name, qty, price);
+			text+= String.format("%-45s %10d %10d\n", name, qty, price);
+			
+			System.out.println(String.format("%-35s %10d %10d\n", name, qty, price));
+
 		}
 		return text;
 	}
