@@ -77,26 +77,26 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <ScrollPane layoutX="-2.0" layoutY="30.0" prefHeight="225.0" prefWidth="396.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="30.0" prefHeight="219.0" prefWidth="396.0">
               <content>
-                  <FlowPane prefHeight="220.0" prefWidth="335.0">
+                  <FlowPane prefHeight="224.0" prefWidth="394.0">
                      <children>
-                        <TextArea fx:id="display" prefHeight="610.0" prefWidth="376.0" wrapText="true">
+                        <TextArea fx:id="display" prefHeight="220.0" prefWidth="393.0" wrapText="true">
                            <font>
-                              <Font name="Monospaced Regular" size="43.0" />
+                              <Font name="Monospaced Regular" size="15.0" />
                            </font>
                         </TextArea>
                      </children>
                   </FlowPane>
               </content>
             </ScrollPane>
-            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="225.0" prefWidth="396.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="219.0" prefWidth="396.0">
                <content>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                  <FlowPane prefHeight="219.0" prefWidth="394.0">
                      <children>
-                        <TextArea fx:id="display2" prefHeight="450.0" prefWidth="378.0" wrapText="true">
+                        <TextArea fx:id="display2" prefHeight="219.0" prefWidth="384.0" wrapText="true">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="15.0" />
                            </font>
                         </TextArea>
                      </children>

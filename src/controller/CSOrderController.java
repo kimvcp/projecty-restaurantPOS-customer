@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Font;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
@@ -81,9 +80,11 @@ public class CSOrderController implements Observer {
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 		o.addObserver(this);
 		setDisplayProp();
-		display2.setPrefHeight(1500);
-		
+		display.setPrefHeight(400);
+		display2.setPrefHeight(400);
 		display.setStyle("-fx-font-family: monospace");
+		display2.setStyle("-fx-font-family: monospace");
+
 	}
 
 	/**
@@ -159,7 +160,7 @@ public class CSOrderController implements Observer {
 		drinks = arg2;
 	}
 
-	// set the current total
+	// Set the current total
 	private void setTotal() {
 		String temp = "" + (o.getTotal() + tmpTotal);
 		total.setText(temp);
@@ -167,7 +168,7 @@ public class CSOrderController implements Observer {
 	}
 
 	/*
-	 * set the temporary total attribute which is use to display the current total
+	 * Set the temporary total attribute which is use to display the current total
 	 */
 	private void setTempTotal(Map<Menu, Integer> map) {
 		tmpTotal = o.getTotal(map);
@@ -182,25 +183,14 @@ public class CSOrderController implements Observer {
 		setTotal();
 	}
 
-	// set the top display in the UI
+	// Set the top display in the UI
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
-		// StringProperty str = new SimpleStringProperty();
-		// str.setValue(text);
-		// display.textProperty().bind(str);
-		// str.addListener(new ChangeListener<Object>() {
-		// @Override
-		// public void changed(ObservableValue<?> observable, Object oldValue,
-		// Object newValue) {
-		// display.selectPositionCaret(display.getLength());
-		// display.deselect();
-		// }
-		// });
 		display.setText(text);
 		setTotal();
 	}
 
-	// set the lower display in the UI
+	// Set the lower display in the UI
 	private void setDisplay2() {
 		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
 		String text = o.orderToText(temp);
