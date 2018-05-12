@@ -5,23 +5,15 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
 
 import application.CSTable;
 import application.Main;
 import database.DBManager;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
