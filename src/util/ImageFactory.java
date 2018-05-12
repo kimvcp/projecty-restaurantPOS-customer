@@ -96,7 +96,6 @@ public class ImageFactory {
 				foodButtonList.add(button);
 
 			}
-			System.out.println("Foods loaded");
 		}
 
 	}
@@ -127,8 +126,6 @@ public class ImageFactory {
 				});
 				drinkButtonList.add(button);
 			}
-
-			System.out.println("Drinks Loaded");
 		}
 	}
 }

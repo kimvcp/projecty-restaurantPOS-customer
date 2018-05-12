@@ -72,8 +72,6 @@ public class CSOrderController implements Observer {
 	@FXML
 	public void initialize() {
 		// adding buttons to each pane
-		// setDisplayProp();
-		System.out.println("Entering table: " + tablenumber);
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 		o.addObserver(this);
