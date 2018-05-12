@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
+
 import application.CSTable;
 import application.Main;
 import database.DBManager;
@@ -18,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -189,18 +192,18 @@ public class CSOrderController implements Observer {
 	// set the top display in the UI
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
-		StringProperty str = new SimpleStringProperty();
-		str.setValue(text);
-		display.textProperty().bind(str);
-		str.addListener(new ChangeListener<Object>() {
-	            @Override
-	            public void changed(ObservableValue<?> observable, Object oldValue,
-	                                Object newValue) {
-	                 display.selectPositionCaret(display.getLength()); 
-	                  display.deselect(); 
-	            }
-	        });
-		
+//		StringProperty str = new SimpleStringProperty();
+//		str.setValue(text);
+//		display.textProperty().bind(str);
+//		str.addListener(new ChangeListener<Object>() {
+//	            @Override
+//	            public void changed(ObservableValue<?> observable, Object oldValue,
+//	                                Object newValue) {
+//	                 display.selectPositionCaret(display.getLength()); 
+//	                  display.deselect(); 
+//	            }
+//	        });
+		display.setText(text);
 		setTotal();
 	}
 
