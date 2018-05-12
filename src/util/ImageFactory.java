@@ -101,7 +101,6 @@ public class ImageFactory {
 					@Override
 					public void handle(MouseEvent event) {
 						o.addOrder((Menu) button.getUserData());
-						System.out.println(((Menu) button.getUserData()).getName());
 						selectedButton = button;
 
 					}
