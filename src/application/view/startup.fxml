@@ -7,34 +7,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="541.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartUpController">
    <children>
-      <Pane layoutX="-5.0" layoutY="-6.0" prefHeight="382.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-6.0">
+      <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="388.0" prefWidth="608.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-6.0">
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
          <children>
-            <Label layoutX="238.0" layoutY="14.0" prefHeight="61.0" prefWidth="131.0" text="Start Up">
+            <Label layoutX="116.0" layoutY="22.0" prefHeight="61.0" prefWidth="318.0" text="Welcome to restaurant">
                <font>
                   <Font name="MS Gothic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="csMode" layoutX="421.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#csModeButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Customer Mode">
+            <Button fx:id="csMode" layoutX="102.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#csModeButtonHandler" prefHeight="138.0" prefWidth="348.0" style="-fx-background-radius: 100;" text="Start Order">
                <font>
-                  <Font name="MS Gothic" size="15.0" />
+                  <Font name="Agency FB" size="44.0" />
                </font>
             </Button>
-            <Button fx:id="login" layoutX="238.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Login">
-               <font>
-                  <Font name="MS Gothic" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="signUp" layoutX="50.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#signUpButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Sign Up">
-               <font>
-                  <Font name="MS Gothic" size="24.0" />
-               </font>
-            </Button>
-            <Label alignment="CENTER" layoutX="79.0" layoutY="86.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="50.0" layoutY="83.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
                <font>
                   <Font size="9.0" />
                </font>
