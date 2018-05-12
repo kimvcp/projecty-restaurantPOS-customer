@@ -2,6 +2,7 @@ package controller;
 
 import application.CSOrder;
 import application.Main;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -54,6 +55,8 @@ public class CSTableController {
 	private Alert alert;
 
 	private String number = "";
+
+	private DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * JavaFX calls the initialize() method of your controller when it creates the
@@ -151,6 +154,10 @@ public class CSTableController {
 	public void okButtonHandler(ActionEvent event) {
 		if (number.length() == 0) {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
+			alert.show();
+		}
+		if (!dbm.checkTable("table" + number)) {
+			alert = new Alert(AlertType.ERROR, "No such a table: " + number, ButtonType.OK);
 			alert.show();
 		} else {
 			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSOrder(number));

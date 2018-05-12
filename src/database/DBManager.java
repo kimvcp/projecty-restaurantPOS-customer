@@ -11,11 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import model.Menu;
-import model.PrivilegeEnum;
-import model.User;
 import util.PropertyManager;
 
 /**
@@ -148,33 +145,6 @@ public class DBManager {
 		return false;
 	}
 
-	// during in test
-	public List<User> getDBUser() {
-		// change to List<Menu>
-		List<User> temp = new ArrayList<>();
-		sqlCommand = "SELECT * FROM " + "User";
-		PreparedStatement stmt = null;
-		try {
-			stmt = connection.prepareStatement(sqlCommand);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				String text = rs.getString("name");
-				User user = new User(text, PrivilegeEnum.USER);
-				temp.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return temp;
-	}
 
 	/**
 	 * Method for inserting current orders into the requested table in database.
@@ -254,40 +224,7 @@ public class DBManager {
 
 	
 
-	/**
-	 * Method for inserting items, which is going to be paid, to the table in
-	 * database with specific tbale number.
-	 * 
-	 * @param tablenumber
-	 * @param list
-	 *            of the table items
-	 */
-	public void insertToSum(Map<Menu, Integer> map) {
-		sqlCommand = "INSERT INTO `Summary` (`FoodName`, `FoodPrice`, `Quantity`) VALUES (?, ?, ?)";
-		PreparedStatement stmt = null;
-		try {
-			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
-				stmt = connection.prepareStatement(sqlCommand);
-				String name = order.getKey().getName();
-				int price = order.getKey().getPrice();
-				int qty = order.getValue();
-				stmt.setString(1, name);
-				stmt.setInt(2, price);
-				stmt.setInt(3, qty);
-				stmt.executeUpdate();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	
 
 
 }

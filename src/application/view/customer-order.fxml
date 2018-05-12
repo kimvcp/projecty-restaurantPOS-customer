@@ -22,7 +22,7 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="order" layoutX="228.0" layoutY="574.0" mnemonicParsing="false" onAction="#orderButtonHandler" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="147.0" style="-fx-background-radius: 100;" text="Order">
+            <Button fx:id="order" layoutX="228.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="147.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -63,19 +63,14 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="11.0" layoutY="516.0" minWidth="69.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="97.0" style="-fx-background-radius: 50;" text="Remove">
-               <font>
-                  <Font name="Agency FB" size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="clear" layoutX="116.0" layoutY="574.0" mnemonicParsing="false" onAction="#clearButtonHandler" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
+            <Button fx:id="clear" layoutX="116.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
             <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="23.0" prefHeight="225.0" prefWidth="406.0">
                <content>
-                  <TextArea fx:id="display" prefHeight="224.0" prefWidth="406.0" promptText="Order is empty">
+                  <TextArea fx:id="display" prefHeight="224.0" prefWidth="406.0">
                      <font>
                         <Font size="18.0" />
                      </font>

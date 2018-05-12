@@ -3,12 +3,12 @@ package controller;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Observer;
 
 import application.CSTable;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,17 +23,16 @@ import model.Menu;
 import model.Order;
 import util.ImageFactory;
 import util.ScreenController;
-import util.UserManager;
 
 /**
  * OrderController(manager/employee) contains method for handling all event
  * receive from the UserInterface. Contains method for viewing and ordering
  * customer orders. (With help form TA for spacing nodes)
  * 
- * @author Piyawat & Vichaphol & P'Jacky
+ * @author Piyawat & Vichaphol
  *
  */
-public class CSOrderController {
+public class CSOrderController implements Observer {
 	@FXML
 	private Button order;
 	@FXML
@@ -64,7 +63,6 @@ public class CSOrderController {
 	private static List<Menu> foods;
 	private static List<Menu> drinks;
 	// instance of classes
-	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 	private static ImageFactory instance = ImageFactory.getInstance();
@@ -78,6 +76,8 @@ public class CSOrderController {
 		System.out.println("Entering table: " + tablenumber);
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
+		o.addObserver(this);
+		setDisplayProp();
 
 	}
 
@@ -98,11 +98,9 @@ public class CSOrderController {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.YES) {
-					Map<Menu, Integer> temp = o.getOrders();
-					dbm.orderToDB(tablenumber, temp);
-					o.clearOrders();
+					dbm.orderToDB(tablenumber, o.getOrders());
 					setDisplay2();
-					display.setText("");
+					o.clearOrders();
 				}
 			});
 		}
@@ -116,8 +114,6 @@ public class CSOrderController {
 	 */
 	public void clearButtonHandler(MouseEvent event) {
 		o.clearOrders();
-		setTotal();
-		display.setText("");
 	}
 
 	/**
@@ -129,8 +125,7 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
@@ -138,8 +133,8 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get the button text
-	 * and set as table number.
+	 * Static method for scene before opening this scene to get the button text and
+	 * set as table number.
 	 * 
 	 * @param buttonText
 	 */
@@ -148,8 +143,8 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get list of menu
-	 * names and set the List<Menu> attribute above.
+	 * Static method for scene before opening this scene to get list of menu names
+	 * and set the List<Menu> attribute above.
 	 * 
 	 * @param List
 	 *            of menu names List<Menu>
@@ -167,8 +162,7 @@ public class CSOrderController {
 	}
 
 	/*
-	 * set the temporary total attribute which is use to display the current
-	 * total
+	 * set the temporary total attribute which is use to display the current total
 	 */
 	private void setTempTotal(Map<Menu, Integer> map) {
 		tmpTotal = o.getTotal(map);
@@ -187,6 +181,7 @@ public class CSOrderController {
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
 		display.setText(text);
+		setTotal();
 	}
 
 	// set the lower display in the UI
@@ -196,5 +191,14 @@ public class CSOrderController {
 		display2.setText(text);
 		setTempTotal(temp);
 		o.clearOrders();
+	}
+
+	/**
+	 * Overridden method from java.util.Observer to set the display everytime a menu
+	 * button is pressed.
+	 */
+	@Override
+	public void update(Observable observable, Object arg) {
+		setDisplay();
 	}
 }
