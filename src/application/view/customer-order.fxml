@@ -81,9 +81,9 @@
               <content>
                   <FlowPane prefHeight="220.0" prefWidth="335.0">
                      <children>
-                        <TextArea fx:id="display" prefHeight="610.0" prefWidth="376.0">
+                        <TextArea fx:id="display" prefHeight="610.0" prefWidth="376.0" wrapText="true">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Monospaced Regular" size="43.0" />
                            </font>
                         </TextArea>
                      </children>

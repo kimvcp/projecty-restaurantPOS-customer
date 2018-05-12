@@ -1,10 +1,10 @@
 package controller;
 
+import java.awt.Font;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
-
 
 import application.CSTable;
 import application.Main;
@@ -59,11 +59,10 @@ public class CSOrderController implements Observer {
 	private TextArea display2;
 
 	@FXML
-	private VBox root ;
+	private VBox root;
 
 	private static String tablenumber;
 	private Alert alert;
-
 
 	// for single instantiation
 	private static List<Menu> foods;
@@ -82,7 +81,9 @@ public class CSOrderController implements Observer {
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 		o.addObserver(this);
 		setDisplayProp();
-
+		display2.setPrefHeight(1500);
+		
+		display.setStyle("-fx-font-family: monospace");
 	}
 
 	/**
@@ -184,17 +185,17 @@ public class CSOrderController implements Observer {
 	// set the top display in the UI
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
-//		StringProperty str = new SimpleStringProperty();
-//		str.setValue(text);
-//		display.textProperty().bind(str);
-//		str.addListener(new ChangeListener<Object>() {
-//	            @Override
-//	            public void changed(ObservableValue<?> observable, Object oldValue,
-//	                                Object newValue) {
-//	                 display.selectPositionCaret(display.getLength()); 
-//	                  display.deselect(); 
-//	            }
-//	        });
+		// StringProperty str = new SimpleStringProperty();
+		// str.setValue(text);
+		// display.textProperty().bind(str);
+		// str.addListener(new ChangeListener<Object>() {
+		// @Override
+		// public void changed(ObservableValue<?> observable, Object oldValue,
+		// Object newValue) {
+		// display.selectPositionCaret(display.getLength());
+		// display.deselect();
+		// }
+		// });
 		display.setText(text);
 		setTotal();
 	}

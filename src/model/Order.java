@@ -125,7 +125,7 @@ public class Order extends Observable {
 			String name = menu.getName();
 			int price = menu.getPrice() * qty;
 			// separate each order by \n
-			text+= String.format("%-45s %10d %10d\n", name, qty, price);
+			text += String.format("%-30s %d %5d\n", name, qty, price);
 			
 			System.out.println(String.format("%-35s %10d %10d\n", name, qty, price));
 
