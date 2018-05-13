@@ -58,7 +58,13 @@ public class DBManager {
 		return instance;
 	}
 
-	// during in test
+	/**
+	 * Get the list of food's Url.
+	 * 
+	 * @param table
+	 *            in the database
+	 * @return list of food's Url
+	 */
 	public List<String> getFoodUrl(String table) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;

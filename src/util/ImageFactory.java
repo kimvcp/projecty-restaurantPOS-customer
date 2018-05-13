@@ -13,7 +13,7 @@ import model.Menu;
 import model.Order;
 
 /**
- * A class for create button with image graphics which, is pulled from database
+ * A class for create button with image graphics, which is pulled from database
  * 
  * @author Piyawat & Vichaphol
  *
@@ -29,6 +29,7 @@ public class ImageFactory {
 	private static List<Button> foodButtonList;
 	private static List<Button> drinkButtonList;
 	private Button selectedButton = null;
+	
 	/**
 	 * Constructor for ImageFactory using lazy instantiation. 
 	 */
@@ -51,6 +52,7 @@ public class ImageFactory {
 			factory = new ImageFactory();
 		return factory;
 	}
+	
 	/**
 	 * Get the selected button waiting to be removed.
 	 * 
@@ -63,6 +65,7 @@ public class ImageFactory {
 	public void setSelectedButton(Button button) {
 		this.selectedButton = button;
 	}
+	
 	/**
 	 * Get all the food's buttons
 	 * 

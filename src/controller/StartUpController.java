@@ -23,7 +23,7 @@ public class StartUpController {
 	private Button csMode;
 
 	/**
-	 * Method for handling ok button. When event receive CustomerTable scene is
+	 * Method for handling Customer mode button. When event received, CustomerTable scene is
 	 * shown.
 	 * 
 	 * @param event
