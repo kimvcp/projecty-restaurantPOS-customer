@@ -24,7 +24,7 @@ public class CSOrder extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Menu");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't load the fxml file.");
 		}
 	}
 }

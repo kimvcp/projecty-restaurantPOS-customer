@@ -25,7 +25,8 @@ public class Main extends AbstractWindow {
 			stage.setTitle("Start Up");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't load the fxml file.");
+
 		}
 	}
 

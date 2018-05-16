@@ -67,7 +67,7 @@ public class CSOrderController implements Observer {
 	private static ImageFactory instance = ImageFactory.getInstance();
 
 	private int tmpTotal;
-
+	
 	@FXML
 	public void initialize() {
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));

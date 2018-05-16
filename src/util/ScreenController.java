@@ -21,7 +21,7 @@ public interface ScreenController {
 		try {
 			app.start(window);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't switch the scene");
 		}
 	}
 }

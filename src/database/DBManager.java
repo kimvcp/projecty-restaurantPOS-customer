@@ -11,6 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sound.midi.Soundbank;
+
 import model.Menu;
 import util.PropertyManager;
 
@@ -39,9 +41,9 @@ public class DBManager {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the class");
 		}
 	}
 
@@ -77,14 +79,14 @@ public class DBManager {
 				temp.add(text);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from database");
 			}
 		}
 		return temp;
@@ -111,14 +113,15 @@ public class DBManager {
 				temp.add(mn);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
+
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from database");
 			}
 		}
 		return temp;
@@ -140,7 +143,7 @@ public class DBManager {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		}
 		return false;
 	}
@@ -168,14 +171,15 @@ public class DBManager {
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from database");
+
 			}
 		}
 	}
@@ -207,13 +211,15 @@ public class DBManager {
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
+
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from database");
+
 			}
 		}
 		return temp;

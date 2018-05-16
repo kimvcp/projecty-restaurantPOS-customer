@@ -20,7 +20,8 @@ public class CSTable extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Table Number");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't load the fxml file.");
+
 		}
 	}
 

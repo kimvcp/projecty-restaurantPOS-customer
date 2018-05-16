@@ -1,5 +1,7 @@
 package controller;
 
+import java.rmi.server.LogStream;
+
 import application.CSOrder;
 import application.Main;
 import database.DBManager;
@@ -128,7 +130,7 @@ public class CSTableController {
 		try {
 			this.number += number;
 		} catch (NullPointerException ex) {
-			ex.printStackTrace();
+			System.out.println("the number is null");
 		}
 		display.setText(this.number);
 	}
